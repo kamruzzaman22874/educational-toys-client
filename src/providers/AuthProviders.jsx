@@ -1,4 +1,4 @@
-import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
+import { GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import app from "../firebase/firebase.config";
 import { createContext, useEffect, useState } from "react";
 // import axios from "axios";
@@ -10,6 +10,7 @@ const AuthProviders = ({ children }) => {
     const [loading, setLoading] = useState(true)
 
     const googleProvider = new GoogleAuthProvider();
+    const githubProvider = new GithubAuthProvider();
 
     const createUser = (email, password) => {
         setLoading(true)
@@ -31,6 +32,10 @@ const AuthProviders = ({ children }) => {
         setLoading(true)
         return signInWithPopup(auth, googleProvider)
     }
+    const githubSignIn = () => {
+        setLoading(true);
+        return signInWithPopup(auth, githubProvider)
+    }
 
     const logOut = () => {
         return signOut(auth)
@@ -39,6 +44,7 @@ const AuthProviders = ({ children }) => {
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser)
+            setLoading(false)
             // if (currentUser) {
             //     setLoading(false)
             //     axios.post("http://localhost:8000/jwt", { email: currentUser?.email })
@@ -66,6 +72,7 @@ const AuthProviders = ({ children }) => {
         createUser,
         userLogin,
         googleSignIn,
+        githubSignIn,
         userUpdateProfile,
         logOut
     }

@@ -1,0 +1,52 @@
+.category-tabs {
+    width: full;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+}
+
+.tab-buttons {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.tab-button {
+    background-color: #f0f0f0;
+    color: rgb(110, 110, 241);
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.tab-button.active {
+    background-color: #3ec5c7;
+    color: white;
+    border-radius: 10px;
+}
+
+.tab-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.toy-card {
+    border: 1px solid #ccc;
+    margin: 10px;
+    padding: 10px;
+}
+
+.toy-card img {
+    width: 100%;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}

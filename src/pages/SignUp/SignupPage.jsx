@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import signup from "../../../public/animation.json"
+import signup from "../../../public/signup.json"
 import Lottie from "lottie-react"
 import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProviders";
@@ -27,16 +27,16 @@ const SignupPage = () => {
         .catch(err => console.log(err))
     };
     return (
-        <div className="font-roboto h-full px-5">
+        <div className="font-roboto h-full px-5 my-36">
             <div className="md:flex items-center justify-center py-10 md:px-16">
                 <div className="rounded-lg bg-transparent p-2">
                     <Lottie className="md:w-[30rem] rounded" animationData={signup}>
-                        <h2 className="text-center text-xl">This is signup page</h2>
+                        
                     </Lottie>
                 </div>
                 <div className="w-full">
-                    <div className="max-w-md mx-auto mt-5 p-6 w-full bg-white opacity-100 border-4 border-[#143484] bg-transparent rounded shadow-lg">
-                        <h2 className="text-2xl font-semibold mb-4">Sign Up</h2>
+                    <div className="max-w-md mx-auto mt-5 p-6 w-full shadow-2xl bg-white border-[#3ec5c7] bg-transparent rounded">
+                        <h2 className="text-2xl font-semibold mb-4 text-blue-800 uppercase">Sign Up</h2>
                         <form onSubmit={handleSubmit(onSubmit)}>
                             <div className="mb-4">
                                 <label htmlFor="name" className="block  font-medium">Name</label>
@@ -85,7 +85,7 @@ const SignupPage = () => {
                             <div className="text-center">
                                 <button
                                     type="submit"
-                                    className="bg-blue-500 hover:bg-blue-700 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline-blue"
+                                    className="bg-[#3ec5c7] hover:bg-[#0b4647] font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline-blue w-full"
                                 >
                                     Sign Up
                                 </button>

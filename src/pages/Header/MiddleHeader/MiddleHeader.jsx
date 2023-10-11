@@ -19,39 +19,35 @@ const MiddleHeader = () => {
             .catch(err => console.log(err));
     }
 
-    // Close dropdown when clicking outside
     useEffect(() => {
         const handleClickOutside = (event) => {
             if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
                 setIsOpen(false);
             }
         };
-
-        // Add event listener when the component mounts
         document.addEventListener("mousedown", handleClickOutside);
-
-        // Clean up the event listener when the component unmounts
         return () => {
             document.removeEventListener("mousedown", handleClickOutside);
         };
     }, []);
 
     return (
-        <div className="flex items-center justify-between md:px-36 px-16 py-5 bg-[#ffffff]">
+        <div className="flex items-center justify-between md:px-36 w-full px-16 py-5 bg-[#ffffff]">
             <div>
                 <img className="md:w-40 w-20" src={logo} alt="" />
             </div>
             <div>
                 <div className={`dropdown dropdown-bottom `} ref={dropdownRef}>
                     <BiSolidUserCircle tabIndex={0}
-                        className="text-4xl cursor-pointer"
+                        // data-tip={user.displayName}
+                        className="text-4xl cursor-pointer w-full"
                         onClick={toggleDropdown} />
                     {
                         isOpen && <ul tabIndex={0}
-                            className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-44"
+                            className="dropdown-content z-[1] menu p-2 shadow  rounded-box w-48 px-2 bg-transparent"
                         >
                             {
-                                user ? <li><button onClick={handleLogout} className="bg-blue-600">Loguot</button></li> : <><li className="font-lora"><Link to="/login">Login</Link></li>
+                                user ? <li><button onClick={handleLogout} className="bg-blue-600 w-full">Loguot</button></li> : <><li className="font-lora"><Link to="/login">Login</Link></li>
                                     <li className="font-lora"
                                     ><Link to="/signup">Create New Account</Link></li></>
                             }

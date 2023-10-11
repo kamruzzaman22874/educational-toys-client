@@ -1,12 +1,15 @@
 
 .card-bg:hover .card_title {
-    transform: scale(150%)!important;
-    transition: 1.5;
-}
-.card_title{
-    transform: scale(50%)!important;
+    transform: scale(100%) !important;
+    transition: transform 0.3s ease-in-out;
+    opacity: 1;
 }
 
+.card-bg .card_title {
+    transform: scale(0%) !important;
+    transition: transform 0.5s ease-in-out;
+    opacity: 1;
+}
 /* #app {
     height: 100%
 }

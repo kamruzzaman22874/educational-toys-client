@@ -1,21 +1,49 @@
 import { Link } from "react-router-dom";
-import MiddleHeader from "../MiddleHeader/MiddleHeader";
+import { useContext } from "react";
+import { AuthContext } from "../../../providers/AuthProviders";
+import logo from "../../../assets/logo/kinderlogo.png"
 
 const Navbar = () => {
+    const { user, logOut } = useContext(AuthContext)
+    const handleLogout = () => {
+        logOut()
+            .then(() => { })
+            .catch(err => console.log(err));
+    }
     const navItems = <>
-        <li><Link to="/">HOME</Link></li>
-        <li><Link to="/alltoy">ALL TOY</Link></li>
-        <li><Link to="/blog">BLOG</Link></li>
-        <li><Link to="/myotoy">MY TOY</Link></li>
-        <li><Link to="/addtoy">ADD TOY</Link></li>
+
+        {
+            user ? <> <li><Link to="/">HOME</Link></li>
+                <li><Link to="/alltoy">ALL TOY</Link></li>
+                <li><Link to="/blog">BLOG</Link></li>
+                <li><Link to="/mytoy">MY TOY</Link></li>
+                <li><Link to="/addtoy">ADD TOY</Link></li>
+                <div
+                    className='avatar tooltip flex items-center gap-5 tooltip-bottom tooltip-secondary'
+                    data-tip={user.displayName}>
+                    <div className='w-10 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2'>
+                        <img src={user.photoURL} />
+                    </div>
+                </div>
+                <li><Link onClick={handleLogout} >
+                    LOGOUT
+                </Link></li>
+            </>
+                : <><li><Link to="/">HOME</Link></li>
+                    <li><Link to="/alltoy">ALL TOY</Link></li>
+                    <li><Link to="/blog">BLOG</Link></li>
+                    <li><Link to="/login">LOGIN</Link></li>
+                </>
+        }
+
 
     </>
     return (
-        <div className="font-roboto font-semibold">
+        <div className="font-roboto font-semibold fixed top-0 z-10 w-full">
             {/* <TopHeader/> */}
-            <MiddleHeader/>
+            {/* <MiddleHeader /> */}
             <div className="navbar bg-[#3ec5c7] z-10">
-                <div className="navbar-start">
+                <div className="navbar-start px-20">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
@@ -24,6 +52,7 @@ const Navbar = () => {
                             {navItems}
                         </ul>
                     </div>
+                    <img className="md:w-40  text-6xl" src={logo} alt="" />
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1 text-xl text-white font-serif">
