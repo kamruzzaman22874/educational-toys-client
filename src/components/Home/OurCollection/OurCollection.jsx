@@ -25,13 +25,13 @@ const OurCollection = () => {
                         className="absolute w-full h-full left-0 top-0 flex justify-center items-center right-0 group-hover:bg-slate-700/50 transition-all duration-200"
                     >
                         <div
-                            className="card_title bg-[#3ec5c7] p-10 border-4 border-white rounded-full w-[320px] h-[320px]"
+                            className="card_title bg-[#3ec5c7] md:p-10 py-8 border-4 border-white rounded-full w-[210px] h-[200px] md:w-[320px] md:h-[320px]"
                         >
-                            <div className="top-[15%] w-full px-1 py-8 space-y-4 text-center">
-                                <h2 className="text-xl w-3/4 mx-auto rounded font-semibold text-white">FINAL SALE!</h2>
-                                <h1 className="text-3xl text-[#3d3d3d] font-extrabold">20% OFFER</h1>
+                            <div className="md:top-[15%] w-full px-1 md:py-8 md:space-y-4 text-center">
+                                <h2 className="md:text-xl text-md md:w-3/4 mx-auto rounded font-semibold text-white">FINAL SALE!</h2>
+                                <h1 className="md:text-3xl text-md text-[#3d3d3d] font-extrabold">20% OFFER</h1>
                                 <h3 className="text-white">LATEST KIDS WEAR ON SALE</h3>
-                                <button className="bg-[#3d3d3d]  text-white hover:bg-white hover:text-black font-roboto px-6 py-2 rounded">Shop Now</button>
+                                <button className="bg-[#3d3d3d]  text-white hover:bg-white hover:text-black font-roboto md:px-6 md:py-2 rounded">Shop Now</button>
                             </div>
                         </div>
                     </div>
@@ -42,11 +42,11 @@ const OurCollection = () => {
                         className="absolute w-full h-full left-0 top-0 flex justify-center items-center right-0 group-hover:bg-slate-700/50 transition-all duration-200"
                     >
                         <div
-                            className="card_title bg-[#29adaf] p-10 border-4 border-white rounded-full w-[320px] h-[320px]"
+                            className="card_title bg-[#29adaf] md:p-10 py-8 border-4 border-white rounded-full w-[210px] h-[200px] md:w-[320px] md:h-[320px]"
                         >
-                            <div className="top-[15%] w-full px-1 py-8 space-y-4 text-center">
-                                <h2 className="text-xl w-3/4 mx-auto rounded font-semibold text-white">FINAL SALE!</h2>
-                                <h1 className="text-3xl text-[#3d3d3d] font-extrabold">40% OFFER</h1>
+                            <div className="md:top-[15%] w-full px-1 md:py-8 md:space-y-4 text-center">
+                                <h2 className="md:text-xl w-3/4 mx-auto rounded font-semibold text-white">FINAL SALE!</h2>
+                                <h1 className="md:text-3xl text-[#3d3d3d] font-extrabold">40% OFFER</h1>
                                 <h3 className="text-white">LATEST KIDS WEAR ON SALE</h3>
                                 <button className="bg-[#3d3d3d]  text-white hover:bg-white hover:text-black font-roboto px-6 py-2 rounded">Shop Now</button>
                             </div>
@@ -59,11 +59,11 @@ const OurCollection = () => {
                         className="absolute w-full h-full left-0 top-0 flex justify-center items-center right-0 group-hover:bg-slate-700/50 transition-all duration-200"
                     >
                         <div
-                            className="card_title bg-[#b98537] p-10 border-4 border-white rounded-full w-[320px] h-[320px]"
+                            className="card_title bg-[#b98537] md:p-10 py-8 border-4 border-white rounded-full w-[210px] h-[200px] md:w-[320px] md:h-[320px]"
                         >
-                            <div className="top-[15%] w-full px-1 py-8 space-y-4 text-center">
-                                <h2 className="text-xl w-3/4 mx-auto rounded font-semibold text-white">FINAL SALE!</h2>
-                                <h1 className="text-3xl text-[#3d3d3d] font-extrabold">10% OFFER</h1>
+                            <div className="md:top-[15%] w-full px-1 md:py-8 md:space-y-4 text-center">
+                                <h2 className="md:text-xl w-3/4 mx-auto rounded font-semibold text-white">FINAL SALE!</h2>
+                                <h1 className="md:text-3xl text-[#3d3d3d] font-extrabold">10% OFFER</h1>
                                 <h3 className="text-white">LATEST KIDS WEAR ON SALE</h3>
                                 <button className="bg-[#3d3d3d]  text-white hover:bg-white hover:text-black font-roboto px-6 py-2 rounded">Shop Now</button>
                             </div>
@@ -76,13 +76,13 @@ const OurCollection = () => {
                         className="absolute w-full h-full left-0 top-0 flex justify-center items-center right-0 group-hover:bg-slate-700/50 transition-all duration-200"
                     >
                         <div
-                            className="card_title bg-[#aa7525] p-10 border-4 border-white rounded-full w-[320px] h-[320px]"
+                            className="card_title bg-[#aa7525] p-10 border-4 border-white rounded-full md:w-[320px] w-[210px] h-[200px] md:h-[320px]"
                         >
-                            <div className="top-[15%] w-full px-1 py-8 space-y-4 text-center">
-                                <h2 className="text-xl w-3/4 mx-auto rounded font-semibold text-white">FINAL SALE!</h2>
-                                <h1 className="text-3xl text-[#3d3d3d] font-extrabold">20% OFFER</h1>
+                            <div className="md:top-[15%] w-full px-1 md:py-8 md:space-y-4 text-center">
+                                <h2 className="md:text-xl md:w-3/4 text-md mx-auto rounded font-semibold text-white">FINAL SALE!</h2>
+                                <h1 className="md:text-3xl text-md text-[#3d3d3d] font-extrabold">20% OFFER</h1>
                                 <h3 className="text-white">LATEST KIDS WEAR ON SALE</h3>
-                                <button className="bg-[#3d3d3d]  text-white hover:bg-white hover:text-black font-roboto px-6 py-2 rounded">Shop Now</button>
+                                <button className="bg-[#3d3d3d]  text-white hover:bg-white hover:text-black font-roboto md:px-6 md:py-2 rounded">Shop Now</button>
                             </div>
                         </div>
                     </div>

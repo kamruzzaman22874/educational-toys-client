@@ -1,11 +1,14 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../providers/AuthProviders";
 
 const AllToy = () => {
-   
+
+    const { user } = useContext(AuthContext)
     const [toys, setToys] = useState([])
     const [showAll, setShowAll] = useState(false);
-    // const [search, setSearch] = useState('');
+    const [search, setSearch] = useState('');
+    const [sortOrder, setSortOrder] = useState('asc');
     useEffect(() => {
         fetch("http://localhost:5000/alltoys")
             .then(res => res.json())
@@ -23,31 +26,61 @@ const AllToy = () => {
             })
     }
 
-    // const handleSearch = () => {
-    //     fetch(`http://localhost:5000/searchToy/${search}`)
-    //         .then((res) => res.json())
-    //         .then((data) => {
-    //             console.log(data);
-    //             setToys(data);
-    //         });
-    // };
+    const handleSearch = (search) => {
+        fetch(`http://localhost:5000/searchToy/${search}`)
+            .then((res) => res.json())
+            .then((data) => {
+                console.log(data);
+                setToys(data);
+            });
+        console.log(search);
+    };
+    const handleSort = (selectedSortOrder) => {
+        setSortOrder(selectedSortOrder);
+        const sortedToys = [...toys];
+        sortedToys.sort((a, b) => {
+            const priceA = parseFloat(a.price.replace('$', ''));
+            const priceB = parseFloat(b.price.replace('$', ''));
+
+            if (selectedSortOrder === 'asc') {
+                return priceA - priceB;
+            } else {
+                return priceB - priceA;
+            }
+        });
+        setToys(sortedToys);
+    };
+
+
 
 
     return (
         <div className="my-28 font-roboto px-20">
-            {/* <div className='text-center my-3'>
-                <input
-                    onChange={(e) => setSearch(e.target.value)}
-                    type='text'
-                    placeholder='Type here'
-                    className='input input-bordered input-primary w-full max-w-xs'
-                />
-                <button
-                    onClick={handleSearch}
-                    className='ml-2 px-4 py-3 bg-pink-600 hover:bg-pink-800 rounded text-white '>
-                    Search
-                </button>
-            </div> */}
+            <div className="flex w-full justify-between">
+                <div className='text-center my-3 flex'>
+                    <input
+                        onChange={(e) => handleSearch(e.target.value)}
+                        type='text'
+                        placeholder='Type here'
+                        className='input input-bordered input-primary w-full max-w-xs'
+                    />
+                    <button
+                        className='ml-2 px-4 py-3 bg-[#3ec5c7] hover:bg-[#0e6d6e] rounded text-white '>
+                        Search
+                    </button>
+                </div>
+
+                <div >
+                    <select
+                        name="selectValue"
+                        className="bg-[#3ec5c7] p-3 text-white border-0 outline-none rounded"
+                        onChange={(e) => handleSort(e.target.value)}
+                    >
+                        <option value="asc">Low to high</option>
+                        <option value="dsc">Hihg to low</option>
+                    </select>
+                </div>
+            </div>
             <div className='w-full my-5'>
                 <div className='overflow-x-auto w-full'>
                     <table className='table w-full'>
@@ -88,7 +121,7 @@ const AllToy = () => {
                                         <td>{toy?.quantity}</td>
                                         <th>
                                             <Link to={`/toyDetails/${toy._id}`}>
-                                                <button className='bg-pink-600 hover:bg-pink-800 rounded font-roboto text-white px-3 py-2 uppercase'>
+                                                <button className='bg-[#3ec5c7] hover:bg-[#167274] rounded font-roboto text-white px-3 py-2 uppercase'>
                                                     view details
                                                 </button>
                                             </Link>

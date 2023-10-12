@@ -1,17 +1,22 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import SectionTitle from "../../SectionTitle/SectionTitle";
 import "./Categories.css"
 import Rating from "react-rating";
 import { FaRegStar, FaStar } from 'react-icons/fa';
-import { Link} from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import ToyDetails from "../../AllToy/ToyDetails";
+import { AuthContext } from "../../../providers/AuthProviders";
+import Swal from "sweetalert2";
 
 const CategorySection = () => {
+    const { user } = useContext(AuthContext)
     const [tabs, setTabs] = useState([]);
-    const sliceData = tabs.slice(0,3)
+    const sliceData = tabs.slice(0, 3)
     const [category, setCategory] = useState("Math Toys")
     const [isOpen, setIsOpen] = useState(false)
     const [filterToy, setFilterToy] = useState({})
+    const location = useLocation()
+    const navigate = useNavigate()
 
 
     useEffect(() => {
@@ -23,10 +28,40 @@ const CategorySection = () => {
     }, [category])
 
 
-  const handleOpenModal =(id) =>{
-    setIsOpen(!isOpen)
-    setFilterToy(tabs.find(toy => toy._id === id))
-    }
+    const handleViewDetails = (_id) => {
+        
+        setFilterToy(tabs.find(toy => toy._id === _id))
+        if (!user) {
+            Swal.fire({
+                title: 'Please login to view details',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Login now!',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    navigate('/login', { state: { from: location } });
+                }
+            });
+        } else {
+            // If the user is logged in, navigate to the view details page
+            navigate(`/toyDetails/${_id }`);
+            setIsOpen(!isOpen)
+            
+        }
+    };
+
+
+
+    //   const handleOpenModal =(id) =>{
+    //     setIsOpen(!isOpen)
+    //     setFilterToy(tabs.find(toy => toy._id === id))
+    //     }
+
+
+
+
     return (
         <div>
             <SectionTitle
@@ -58,7 +93,7 @@ const CategorySection = () => {
                             Engineering Toys
                         </button>
                     </div>
-                    <div  className="grid md:grid-cols-3 w-full">
+                    <div className="grid md:grid-cols-3 w-full">
                         {sliceData?.map((toy, index) => (
                             <div key={index} className="toy-card text-center space-y-3 rounded">
                                 <img data-aos="zoom-in" className="h-[300px] rounded" src={toy.image} alt={toy.name} />
@@ -69,14 +104,14 @@ const CategorySection = () => {
                                         className="text-yellow-600"
                                         placeholderRating={toy.rating}
                                         readonly
-                                        emptySymbol={<FaRegStar/>}
-                                        placeholderSymbol={<FaStar/>}
-                                        fullSymbol={<FaStar/>}
+                                        emptySymbol={<FaRegStar />}
+                                        placeholderSymbol={<FaStar />}
+                                        fullSymbol={<FaStar />}
                                     />
                                 </p>
-                                <ToyDetails isOpen={isOpen} setIsOpen={setIsOpen} detailsToys={filterToy}/>
+                                <ToyDetails isOpen={isOpen} setIsOpen={setIsOpen} detailsToys={filterToy} />
                                 <Link>
-                                    <button onClick={() => handleOpenModal(toy._id)} className="rounded w-full py-3 uppercase text-md bg-[#3ec5c7]">View Details</button>
+                                    <button onClick={() => handleViewDetails(toy._id)} className="rounded w-full py-3 uppercase text-md bg-[#3ec5c7]">View Details</button>
                                 </Link>
                             </div>
                         ))}

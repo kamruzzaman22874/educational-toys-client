@@ -1,6 +1,5 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { useForm } from "react-hook-form";
-import { toast } from "react-toastify";
 import { AuthContext } from "../../providers/AuthProviders";
 import Swal from "sweetalert2";
 

@@ -9,8 +9,8 @@ import AddToy from "../components/AddToy/AddToy";
 import Blog from "../components/Blog/Blog";
 import Error from "../pages/Error/Error";
 import PrivateRoutes from "./PrivateRoutes";
-import CategorySection from "../components/Home/CategorySection/CategorySection";
 import SingleViewDetails from "../components/SingleViewDetails/SingleViewDetails";
+import AddToyModal from "../components/AddToyModal/AddToyModal";
 
 export const router = createBrowserRouter([
     {
@@ -36,7 +36,13 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/mytoy",
-                element: <MyToy/>
+                element: <PrivateRoutes><MyToy /></PrivateRoutes>
+            },
+            {
+                path: "/mytoy/:id",
+                element: <AddToyModal/>,
+                loader: ({ params }) => fetch(`http://localhost:5000/toys/${params.id}`)
+
             },
             {
                 path: "/addtoy",
@@ -48,7 +54,7 @@ export const router = createBrowserRouter([
             },
             {
                 path:"/toyDetails/:id",
-                element: <SingleViewDetails/>,
+                element: <PrivateRoutes><SingleViewDetails /></PrivateRoutes>,
                 loader: ({ params }) => fetch(`http://localhost:5000/alltoysdetails/${params.id}`)
             }
         ]
