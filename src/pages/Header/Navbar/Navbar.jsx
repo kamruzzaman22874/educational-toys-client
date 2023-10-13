@@ -39,7 +39,7 @@ const Navbar = () => {
 
     </>
     return (
-        <div className="font-roboto font-semibold fixed top-0 z-10 w-full">
+        <div className="font-teko font-semibold fixed top-0 z-10 w-full">
             {/* <TopHeader/> */}
             {/* <MiddleHeader /> */}
             <div className="navbar bg-[#3ec5c7] z-10">

@@ -10,7 +10,7 @@ const AllToy = () => {
     const [search, setSearch] = useState('');
     const [sortOrder, setSortOrder] = useState('asc');
     useEffect(() => {
-        fetch("http://localhost:5000/alltoys")
+        fetch("https://education-toys-server-iota.vercel.app/alltoys")
             .then(res => res.json())
             .then(data => {
                 setToys(data);
@@ -18,7 +18,7 @@ const AllToy = () => {
     }, [])
 
     const handleShowAll = () => {
-        fetch("http://localhost:5000/showToy")
+        fetch("https://education-toys-server-iota.vercel.app/showToy")
             .then(res => res.json())
             .then(data => {
                 setToys(data);
@@ -27,7 +27,7 @@ const AllToy = () => {
     }
 
     const handleSearch = (search) => {
-        fetch(`http://localhost:5000/searchToy/${search}`)
+        fetch(`https://education-toys-server-iota.vercel.app/searchToy/${search}`)
             .then((res) => res.json())
             .then((data) => {
                 console.log(data);
@@ -76,8 +76,8 @@ const AllToy = () => {
                         className="bg-[#3ec5c7] p-3 text-white border-0 outline-none rounded"
                         onChange={(e) => handleSort(e.target.value)}
                     >
-                        <option value="asc">Low to high</option>
-                        <option value="dsc">Hihg to low</option>
+                        <option className="py-2" value="asc">Low to high</option>
+                        <option className="py-2" value="dsc">Hihg to low</option>
                     </select>
                 </div>
             </div>

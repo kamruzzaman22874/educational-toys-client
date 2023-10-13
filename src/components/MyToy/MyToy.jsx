@@ -17,10 +17,10 @@ const MyToy = () => {
 
         queryKey: ['singleViewDetails'],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/singletoy?sellerEmail=${user?.email}`);
+            const res = await fetch(`https://education-toys-server-iota.vercel.app/singletoy?sellerEmail=${user?.email}`);
             return res.json()
         }
-        
+
 
     })
 
@@ -37,7 +37,7 @@ const MyToy = () => {
 
             if (result.isConfirmed) {
                 refetch();
-                fetch(`http://localhost:5000/toys/${_id}`, {
+                fetch(`https://education-toys-server-iota.vercel.app/toys/${_id}`, {
                     method: "DELETE"
                 })
                     .then(res => res.json())
@@ -54,13 +54,13 @@ const MyToy = () => {
             }
         })
     }
-    const handleUpdate =(id) =>{
+    const handleUpdate = (id) => {
         refetch()
-        fetch(`http://localhost:5000/alltoysdetails/${id}`)
-        .then(res => res.json())
-        .then(data =>{
-            setUpdate(data)
-        })
+        fetch(`https://education-toys-server-iota.vercel.app/alltoysdetails/${id}`)
+            .then(res => res.json())
+            .then(data => {
+                setUpdate(data)
+            })
     }
 
     return (
@@ -106,7 +106,7 @@ const MyToy = () => {
                                 <td>{toy?.quantity}</td>
                                 <td>{toy?.price}</td>
                                 <th>
-                                    <AddToyModal refetch={refetch} isOpen={isOpen} setIsOpen={setIsOpen} update={update}/>
+                                    <AddToyModal refetch={refetch} isOpen={isOpen} setIsOpen={setIsOpen} update={update} />
                                     <label onClick={() => handleUpdate(toy._id)} htmlFor="my_modal_6" className="btn"><BiSolidEdit className="text-3xl text-[#3ec5c7]"></BiSolidEdit></label>
                                 </th>
                                 <th>

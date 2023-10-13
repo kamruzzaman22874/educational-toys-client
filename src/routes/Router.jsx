@@ -1,4 +1,4 @@
-import { createBrowserRouter} from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
 import MainLayouts from "../layouts/MainLayouts";
 import Home from "../components/Home/Home/Home";
 import LoginPage from "../pages/LoginPage/LoginPage";
@@ -15,24 +15,24 @@ import AddToyModal from "../components/AddToyModal/AddToyModal";
 export const router = createBrowserRouter([
     {
         path: "/",
-        errorElement: <Error/>,
-        element: <MainLayouts/>,
-        children:[
+        errorElement: <Error />,
+        element: <MainLayouts />,
+        children: [
             {
                 path: "/",
-                element: <Home/>
+                element: <Home />
             },
             {
                 path: "/login",
-                element: <LoginPage/>
+                element: <LoginPage />
             },
             {
                 path: "signup",
-                element: <SignupPage/>
+                element: <SignupPage />
             },
             {
                 path: "/alltoy",
-                element: <AllToy/>
+                element: <AllToy />
             },
             {
                 path: "/mytoy",
@@ -40,8 +40,8 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/mytoy/:id",
-                element: <AddToyModal/>,
-                loader: ({ params }) => fetch(`http://localhost:5000/toys/${params.id}`)
+                element: <AddToyModal />,
+                loader: ({ params }) => fetch(`https://education-toys-server-iota.vercel.app/toys/${params.id}`)
 
             },
             {
@@ -50,12 +50,12 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/blog",
-                element: <Blog/>
+                element: <Blog />
             },
             {
-                path:"/toyDetails/:id",
+                path: "/toyDetails/:id",
                 element: <PrivateRoutes><SingleViewDetails /></PrivateRoutes>,
-                loader: ({ params }) => fetch(`http://localhost:5000/alltoysdetails/${params.id}`)
+                loader: ({ params }) => fetch(`https://education-toys-server-iota.vercel.app/alltoysdetails/${params.id}`)
             }
         ]
     },

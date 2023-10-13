@@ -8,7 +8,8 @@ export default {
     extend: {
       fontFamily: {
         roboto: ["Roboto" , "serif"],
-        lora: "'lora', 'serif"
+        lora: ['lora', 'serif'],
+        teko: ['Teko', 'sans-serif']
       }
     },
   },

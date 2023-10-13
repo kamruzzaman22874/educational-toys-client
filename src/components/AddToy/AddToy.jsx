@@ -8,7 +8,7 @@ const AddToy = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const { user } = useContext(AuthContext);
     const onSubmit = (toy) => {
-        fetch('http://localhost:5000/singletoy', {
+        fetch('https://education-toys-server-iota.vercel.app/singletoy', {
             method: 'POST',
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify(toy),
