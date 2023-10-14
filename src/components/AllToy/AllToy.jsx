@@ -33,7 +33,6 @@ const AllToy = () => {
                 console.log(data);
                 setToys(data);
             });
-        console.log(search);
     };
     const handleSort = (selectedSortOrder) => {
         setSortOrder(selectedSortOrder);

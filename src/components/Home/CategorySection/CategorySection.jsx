@@ -54,15 +54,6 @@ const CategorySection = () => {
     };
 
 
-
-    //   const handleOpenModal =(id) =>{
-    //     setIsOpen(!isOpen)
-    //     setFilterToy(tabs.find(toy => toy._id === id))
-    //     }
-
-
-
-
     return (
         <div>
             <SectionTitle
