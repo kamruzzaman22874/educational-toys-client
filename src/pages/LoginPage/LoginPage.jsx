@@ -18,11 +18,12 @@ const LoginPage = () => {
     const onSubmit = (data) => {
         userLogin(data.email, data.password)
             .then(result => {
-                const user = result.data.user;
+                const user = result.user;
                 console.log(user);
                 alert("user login successful")
+                navigate(from, { replace: true })
             })
-        navigate(from, { replace: true })
+            .catch(err => setError(err.message))
     };
 
 
@@ -82,8 +83,9 @@ const LoginPage = () => {
                                 />
                                 {errors.password && <span className="text-red-500">Password is required</span>}
                             </div>
+                            {error && <p className="text-center text-red-500">User not valid</p>}
+                            
                             <p className="text-center py-5">DO NOT HAVE AN ACCOUNT? <Link to="/signup" className="underline">SIGN UP</Link> </p>
-                            <p className="text-center text-red-500">{error}</p>
                             <div className="text-center">
                                 <button
                                     type="submit"
