@@ -50,7 +50,7 @@ const LoginPage = () => {
     //     });
     // };
     return (
-        <div className="font-roboto  px-5 pb-5">
+        <div className="font-roboto  px-5 pb-5 my-28">
             <div className="md:flex items-center justify-center  md:px-16">
                 <div className="rounded-lg">
                     <Lottie className="md:w-[30rem]" animationData={signup}>
