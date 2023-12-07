@@ -4,6 +4,7 @@ import './index.css'
 import { RouterProvider } from 'react-router-dom'
 import { router } from './routes/Router.jsx'
 import AuthProviders from './providers/AuthProviders'
+import MessengerCustomerChat from 'react-messenger-customer-chat';
 import {
   QueryClient,
   QueryClientProvider
@@ -17,6 +18,11 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <AuthProviders>
           <RouterProvider router={router}>
           </RouterProvider>
+
+          <MessengerCustomerChat
+            pageId="183847784811940"
+            appId="6895433173827211"
+          />,
         </AuthProviders>
       </QueryClientProvider>
     </div>

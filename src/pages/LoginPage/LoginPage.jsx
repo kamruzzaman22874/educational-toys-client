@@ -29,10 +29,10 @@ const LoginPage = () => {
 
     const handleGoogleSignIn = () => {
         googleSignIn()
-        .then((result) => {
-            console.log(result);
-            navigate(from, { replace: true });
-        })
+            .then((result) => {
+                console.log(result);
+                navigate(from, { replace: true });
+            })
             .catch(err => {
                 setError(err);
                 // toast.error('Login failed please try again');
@@ -54,10 +54,10 @@ const LoginPage = () => {
             <div className="md:flex items-center justify-center  md:px-16">
                 <div className="rounded-lg">
                     <Lottie className="md:w-[30rem]" animationData={signup}>
-                        
+
                     </Lottie>
                 </div>
-                <div className="w-full mt-28 h-full">
+                <div className="w-full h-full">
                     <div className="max-w-md mx-auto mt-5 p-6 w-full shadow-2xl bg-white border-[#3ec5c7] bg-transparent  rounded">
                         <h2 className="text-2xl font-semibold mb-4 text-blue-800 uppercase">Login</h2>
                         <form onSubmit={handleSubmit(onSubmit)}>
@@ -84,7 +84,7 @@ const LoginPage = () => {
                                 {errors.password && <span className="text-red-500">Password is required</span>}
                             </div>
                             {error && <p className="text-center text-red-500">User not valid</p>}
-                            
+
                             <p className="text-center py-5">DO NOT HAVE AN ACCOUNT? <Link to="/signup" className="underline">SIGN UP</Link> </p>
                             <div className="text-center">
                                 <button

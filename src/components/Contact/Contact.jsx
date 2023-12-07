@@ -1,9 +1,33 @@
+import { useRef } from "react";
 import SectionTitle from "../SectionTitle/SectionTitle";
+import emailjs from '@emailjs/browser';
+import Swal from "sweetalert2";
 
 const Contact = () => {
+    const form = useRef();
+    const sendEmail = (e) => {
+        e.preventDefault();
+
+        emailjs.sendForm('service_5mop81e', 'template_zqvvn3m', form.current, 'BrVYNg955rRrREFuo')
+            .then((result) => {
+                console.log(result)
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Your Email has been sent successfully",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+                if (form.current) {
+                    form.current.reset();
+                }
+            }, (error) => {
+                console.log(error.text);
+            });
+    };
     return (
         <section className="py-10 bg-gradient-to-r from-bg-[#3ec5c7] to-blue-600 sm:py-16 lg:py-8">
-            
+
             <div className="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl">
                 <div className="max-w-2xl mx-auto text-center">
                     <h2 className="text-3xl font-bold leading-tight text-white sm:text-4xl lg:text-5xl">Contact us</h2>
@@ -18,34 +42,33 @@ const Contact = () => {
                         <div className="lg:col-span-3">
                             <div className="p-6 sm:p-10">
                                 <h3 className="text-2xl font-semibold text-black">Send us a message</h3>
-
-                                <form action="#" method="POST" className="mt-8">
+                                <form ref={form} onSubmit={sendEmail} action="#" method="POST" className="mt-8">
                                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 gap-y-4">
                                         <div>
-                                            <label  className="text-base font-medium text-gray-900"> Your name </label>
+                                            <label className="text-base font-medium text-gray-900"> Your name </label>
                                             <div className="mt-2.5 relative">
-                                                <input type="text" name="" id="" placeholder="" className="block w-full px-4 py-4 text-black placeholder-gray-500 transition-all duration-200 border border-gray-200 rounded-md bg-gray-50 focus:outline-none focus:border-blue-600 focus:bg-white caret-blue-600" />
+                                                <input type="text" name="from_name" id="" placeholder="" className="block w-full px-4 py-4 text-black placeholder-gray-500 transition-all duration-200 border border-gray-200 rounded-md bg-gray-50 focus:outline-none focus:border-blue-600 focus:bg-white caret-blue-600" />
                                             </div>
                                         </div>
 
                                         <div>
-                                            <label  className="text-base font-medium text-gray-900"> Your email </label>
+                                            <label className="text-base font-medium text-gray-900"> Your email </label>
                                             <div className="mt-2.5 relative">
-                                                <input type="email" name="" id="" placeholder="" className="block w-full px-4 py-4 text-black placeholder-gray-500 transition-all duration-200 border border-gray-200 rounded-md bg-gray-50 focus:outline-none focus:border-blue-600 focus:bg-white caret-blue-600" />
+                                                <input type="email" name="from_email" id="" placeholder="" className="block w-full px-4 py-4 text-black placeholder-gray-500 transition-all duration-200 border border-gray-200 rounded-md bg-gray-50 focus:outline-none focus:border-blue-600 focus:bg-white caret-blue-600" />
                                             </div>
                                         </div>
 
                                         <div>
                                             <label className="text-base font-medium text-gray-900"> Phone number </label>
                                             <div className="mt-2.5 relative">
-                                                <input type="tel" name="" id="" placeholder="" className="block w-full px-4 py-4 text-black placeholder-gray-500 transition-all duration-200 border border-gray-200 rounded-md bg-gray-50 focus:outline-none focus:border-blue-600 focus:bg-white caret-blue-600" />
+                                                <input type="tel" name="from_phone" id="" placeholder="" className="block w-full px-4 py-4 text-black placeholder-gray-500 transition-all duration-200 border border-gray-200 rounded-md bg-gray-50 focus:outline-none focus:border-blue-600 focus:bg-white caret-blue-600" />
                                             </div>
                                         </div>
 
                                         <div>
                                             <label className="text-base font-medium text-gray-900"> Company name </label>
                                             <div className="mt-2.5 relative">
-                                                <input type="text" name="" id="" placeholder="" className="block w-full px-4 py-4 text-black placeholder-gray-500 transition-all duration-200 border border-gray-200 rounded-md bg-gray-50 focus:outline-none focus:border-blue-600 focus:bg-white caret-blue-600" />
+                                                <input type="text" name="from_company" id="" placeholder="" className="block w-full px-4 py-4 text-black placeholder-gray-500 transition-all duration-200 border border-gray-200 rounded-md bg-gray-50 focus:outline-none focus:border-blue-600 focus:bg-white caret-blue-600" />
                                             </div>
                                         </div>
 
@@ -53,7 +76,7 @@ const Contact = () => {
                                             <label className="text-base font-medium text-gray-900"> Message </label>
                                             <div className="mt-2.5 relative">
                                                 <textarea
-                                                    name=""
+                                                    name="message"
                                                     id=""
                                                     placeholder=""
                                                     className="block w-full px-4 py-4 text-black placeholder-gray-500 transition-all duration-200 border border-gray-200 rounded-md resize-y bg-gray-50 focus:outline-none focus:border-blue-600 focus:bg-white caret-blue-600"
